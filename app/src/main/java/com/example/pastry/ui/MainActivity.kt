@@ -19,14 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         initializeNavController()
         initBottomNavigation()
-
-//        // Initialize NavController
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_container) as NavHostFragment
-//        navController = navHostFragment.navController
-//
-//        // Set up BottomNavigationView with NavController
-//        val bottomNav: BottomNavigationView = findViewById(R.id.bottom_navigation_view)
-//        NavigationUI.setupWithNavController(bottomNav, navController)
     }
 
     private fun initBottomNavigation() {

@@ -6,14 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.pasrty.R
+import com.example.pasrty.databinding.FragmentHomeBinding
+import com.example.pasrty.databinding.FragmentProductsBinding
 
 
 class ProductsFragment : Fragment() {
+    private lateinit var binding: FragmentProductsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_products, container, false)
+        binding = FragmentProductsBinding.inflate(layoutInflater)
+        return binding.root
     }
 }
