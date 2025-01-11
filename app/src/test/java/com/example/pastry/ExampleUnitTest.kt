@@ -1,4 +1,4 @@
-package com.example.pasrty
+package com.example.pastry
 
 import org.junit.Test
 

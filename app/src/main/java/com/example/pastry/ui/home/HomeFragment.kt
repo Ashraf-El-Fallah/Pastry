@@ -1,4 +1,4 @@
-package com.example.pasrty.ui.home
+package com.example.pastry.ui.home
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
