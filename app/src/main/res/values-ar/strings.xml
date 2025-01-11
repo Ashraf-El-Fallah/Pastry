@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home">الصفحة الرئيسية</string>
+    <string name="favorites">المفضلة</string>
+    <string name="shopping">التسوق</string>
+    <string name="profile">الصفحة الشخصية</string>
+</resources>
