@@ -5,4 +5,7 @@
     <string name="shopping">shopping</string>
     <string name="profile">profile</string>
     <string name="pastry">Pastry</string>
+    <string name="categories">Categories</string>
+    <string name="products">Products</string>
+
 </resources>
