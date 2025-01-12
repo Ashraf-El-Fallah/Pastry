@@ -1,11 +1,14 @@
 package com.example.pastry.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Visibility
 import com.example.pasrty.databinding.ItemCategoryBinding
+import com.example.pasrty.databinding.ItemProductBinding
 import com.example.pastry.data.remote.model.Category
 import com.example.pastry.utils.loadImage
 
