@@ -1,8 +1,7 @@
-package com.example.pastry
+package com.example.pastry.di
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
-class MyApp :Application() {
-}
+class MyApp : Application()

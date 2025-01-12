@@ -17,6 +17,7 @@ fun ProductDtoItem.toProduct(): Product {
 fun CategoryDtoItem.toCategory(): Category {
     return Category(
         image = this.image,
-        name = this.name
+        name = this.name,
+        id = this.id
     )
 }

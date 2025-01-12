@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface ProductApiService {
 
-    @GET("https://fakestoreapi.com/products")
-    suspend fun getProducts(): List<ProductDtoItem> // Replace Product with your data model
+    @GET("products")
+    suspend fun getProducts(): List<ProductDtoItem>
 }
 

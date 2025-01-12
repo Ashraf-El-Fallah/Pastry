@@ -62,10 +62,10 @@ dependencies {
 
 
     //material design
-    implementation("com.google.android.material:material:1.3.0-alpha03")
+    implementation(libs.material.v130alpha03)
 
     //fragment container view
-    implementation("androidx.fragment:fragment:1.2.5")
+    implementation(libs.androidx.fragment)
 
 
     // Architectural Components
