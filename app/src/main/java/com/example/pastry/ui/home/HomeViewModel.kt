@@ -10,7 +10,6 @@ import com.example.pastry.data.remote.model.Product
 import com.example.pastry.data.remote.repository.PastryRepository
 import com.example.pastry.utils.ScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -25,6 +24,9 @@ class HomeViewModel @Inject constructor(
     private val _allCategories = MutableLiveData<ScreenState<List<Category>>>()
     val allCategories: LiveData<ScreenState<List<Category>>> get() = _allCategories
 
+    private val imageUrls = mutableListOf<String>()
+
+
     init {
         getAllProducts()
         getAllCategories()
@@ -35,10 +37,26 @@ class HomeViewModel @Inject constructor(
             repository.getProducts().collectLatest {
                 when (it) {
                     is NetWorkResponseState.Loading -> _allProducts.postValue(ScreenState.Loading)
-                    is NetWorkResponseState.Success -> _allProducts.postValue(ScreenState.Success(it.result))
+                    is NetWorkResponseState.Success -> {
+                        _allProducts.postValue(ScreenState.Success(it.result))
+                        it.result.forEach { product ->
+                            product.image?.let { it1 -> imageUrls.add(it1) }  // Collect all product images
+                        }
+                    }
+
                     is NetWorkResponseState.Error -> _allProducts.postValue(ScreenState.Error())
                 }
             }
+        }
+    }
+
+    fun getRandomImagesForCards(): Pair<String, String> {
+        return if (imageUrls.size >= 2) {
+            val card1Image = imageUrls.random()
+            val card2Image = imageUrls.filter { it != card1Image }.random()
+            Pair(card1Image, card2Image)
+        } else {
+            Pair("default_image_url", "default_image_url")
         }
     }
 
@@ -47,11 +65,12 @@ class HomeViewModel @Inject constructor(
             repository.getCategories().collectLatest {
                 when (it) {
                     is NetWorkResponseState.Loading -> _allCategories.postValue(ScreenState.Loading)
-                    is NetWorkResponseState.Success -> _allCategories.postValue(
-                        ScreenState.Success(
-                            it.result
+                    is NetWorkResponseState.Success ->
+                        _allCategories.postValue(
+                            ScreenState.Success(
+                                it.result
+                            )
                         )
-                    )
 
                     is NetWorkResponseState.Error -> _allCategories.postValue(ScreenState.Error())
                 }

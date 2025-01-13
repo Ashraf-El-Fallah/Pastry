@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class ProductDtoItem(
     @SerializedName("category")
-    val category: String,
+    val category: String?,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("id")
-    val id: Int,
+    val id: Int?,
     @SerializedName("image")
-    val image: String,
+    val image: String?,
     @SerializedName("price")
-    val price: Double,
+    val price: Double?,
     @SerializedName("rating")
-    val rating: Rating,
+    val rating: Rating?,
     @SerializedName("title")
-    val title: String,
+    val title: String?,
 )

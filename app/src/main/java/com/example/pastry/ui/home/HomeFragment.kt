@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.pasrty.databinding.FragmentHomeBinding
 import com.example.pastry.utils.ScreenState
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,6 +27,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         categoriesObserver()
+        productObserver()
     }
 
     private fun categoriesObserver() {
@@ -41,6 +43,36 @@ class HomeFragment : Fragment() {
                         )
                         adapter = CategoriesAdapter().apply {
                             submitList(it.uiData)
+                        }
+                    }
+                }
+
+                is ScreenState.Error -> {
+                    binding.progress.visibility = View.GONE
+                }
+            }
+        }
+    }
+
+    private fun productObserver() {
+        homeViewModel.allProducts.observe(viewLifecycleOwner) {
+            when (it) {
+                is ScreenState.Loading -> binding.progress.visibility = View.VISIBLE
+                is ScreenState.Success -> {
+                    binding.progress.visibility = View.GONE
+                    binding.productsRecyclerView.apply {
+                        layoutManager = LinearLayoutManager(
+                            requireContext(),
+                            LinearLayoutManager.HORIZONTAL, false
+                        )
+                        adapter = ProductsAdapter().apply {
+                            submitList(it.uiData)
+
+                            val (card1Image, card2Image) = homeViewModel.getRandomImagesForCards()
+                            Glide.with(requireContext()).load(card1Image)
+                                .into(binding.cardImage)
+                            Glide.with(requireContext()).load(card2Image)
+                                .into(binding.cardImage2)
                         }
                     }
                 }
