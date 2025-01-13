@@ -4,8 +4,9 @@
     <string name="favorites">favorites</string>
     <string name="shopping">shopping</string>
     <string name="profile">profile</string>
-    <string name="pastry">Pastry</string>
+    <string name="pastry" translatable="false">Pastry</string>
     <string name="categories">Categories</string>
     <string name="products">Products</string>
+    <string name="add_to_shopping">Add to shopping</string>
 
 </resources>
