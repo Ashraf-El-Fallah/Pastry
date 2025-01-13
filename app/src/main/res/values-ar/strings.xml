@@ -7,5 +7,6 @@
     <string name="categories">الأقسام</string>
     <string name="products">المنتجات</string>
     <string name="add_to_shopping">إضافة إلى السلة</string>
+    <string name="show_all"><u>عرض الكل</u></string>
 
 </resources>

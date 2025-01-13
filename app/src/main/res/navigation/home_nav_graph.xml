@@ -28,9 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/productsFragment"
-        android:name="com.example.pastry.ui.products.ProductsFragment"
+        android:name="com.example.pastry.ui.home.categories.CategoriesFragment"
         android:label="fragment_products"
-        tools:layout="@layout/fragment_products">
+        tools:layout="@layout/fragment_categories">
         <action
             android:id="@+id/action_productsFragment_to_detailsFragment"
             app:destination="@id/detailsFragment" />

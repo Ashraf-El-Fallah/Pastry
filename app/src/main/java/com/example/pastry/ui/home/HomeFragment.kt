@@ -29,6 +29,14 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         categoriesObserver()
         productObserver()
+        binding.showAll.setOnClickListener {
+            navigateToCategoriesScreen()
+        }
+    }
+
+    private fun navigateToCategoriesScreen() {
+        val action = HomeFragmentDirections.actionHomeFragmentToProductsFragment()
+        findNavController().navigate(action)
     }
 
     private fun categoriesObserver() {

@@ -8,5 +8,6 @@
     <string name="categories">Categories</string>
     <string name="products">Products</string>
     <string name="add_to_shopping">Add to shopping</string>
+    <string name="show_all"><u>show all</u></string>
 
 </resources>
