@@ -9,8 +9,9 @@ import com.example.pasrty.databinding.ItemProductBinding
 import com.example.pastry.data.remote.model.Product
 import com.example.pastry.utils.loadImage
 
-class ProductsAdapter :
-    ListAdapter<Product, ProductsAdapter.ProductViewHolder>(ProductDiffCallBack()) {
+class ProductsAdapter(
+    private val onItemClick: (Int?) -> Unit,
+) : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(ProductDiffCallBack()) {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -33,6 +34,9 @@ class ProductsAdapter :
                 productsImage.loadImage(product.image)
                 productsName.text = product.title
                 productsPrice.text = product.price.toString()
+                root.setOnClickListener {
+                    onItemClick(product.id)
+                }
             }
         }
     }

@@ -2,9 +2,9 @@ package com.example.pastry.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class Rating(
+data class RatingDto(
     @SerializedName("count")
-    val count: Int,
+    val count: Int?,
     @SerializedName("rate")
-    val rate: Double
+    val rate: Double?
 )

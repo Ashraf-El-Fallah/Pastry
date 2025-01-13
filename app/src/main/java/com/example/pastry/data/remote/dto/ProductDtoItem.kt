@@ -14,7 +14,7 @@ data class ProductDtoItem(
     @SerializedName("price")
     val price: Double?,
     @SerializedName("rating")
-    val rating: Rating?,
+    val ratingDto: RatingDto?,
     @SerializedName("title")
     val title: String?,
 )

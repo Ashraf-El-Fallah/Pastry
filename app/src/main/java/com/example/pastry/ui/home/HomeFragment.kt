@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.pasrty.databinding.FragmentHomeBinding
@@ -54,6 +55,11 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun navigateToProductDetail(productId: Int) {
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(productId)
+        findNavController().navigate(action)
+    }
+
     private fun productObserver() {
         homeViewModel.allProducts.observe(viewLifecycleOwner) {
             when (it) {
@@ -65,9 +71,12 @@ class HomeFragment : Fragment() {
                             requireContext(),
                             LinearLayoutManager.HORIZONTAL, false
                         )
-                        adapter = ProductsAdapter().apply {
+                        adapter = ProductsAdapter(
+                            onItemClick = { productId ->
+                                productId?.let { navigateToProductDetail(it) }
+                            }
+                        ).apply {
                             submitList(it.uiData)
-
                             val (card1Image, card2Image) = homeViewModel.getRandomImagesForCards()
                             Glide.with(requireContext()).load(card1Image)
                                 .into(binding.cardImage)
